@@ -10,7 +10,7 @@ for packet in pcapScrap1:
     line = str(packet)
     formattedLine = line.split(" ")
     print(formattedLine)
-    protocolList1.append(formattedLine[4])  # Protocol field on 4th place
+    protocolList1.append(formattedLine[4])  
     pcapData1 = collections.Counter(protocolList1)
 print(protocolList1)
 
@@ -20,7 +20,7 @@ for packet in pcapScrap2:
     line = str(packet)
     formattedLine = line.split(" ")
     print(formattedLine)
-    protocolList2.append(formattedLine[4])  # Protocol field on 4th place
+    protocolList2.append(formattedLine[4]) 
     pcapData2 = collections.Counter(protocolList2)
 print(protocolList2)
 
