@@ -31,9 +31,9 @@ x_pos = np.arange(len(list(pcapData1.keys())))
 y_pos = np.arange(len(list(pcapData2.keys())))
 
 plt.bar(x_pos, list(pcapData1.values()), align='center', alpha=0.5, color=['b', 'g', 'r', 'c', 'm'])
-plt.xticks(x_pos, list(pcapData2.keys()))
+plt.xticks(x_pos, list(pcapData1.keys()))
 
-plt.bar(y_pos, list(pcapData1.values()), align='center', alpha=0.5, color=['black'])
+plt.bar(y_pos, list(pcapData2.values()), align='center', alpha=0.5, color=['black'])
 plt.xticks(y_pos, list(pcapData2.keys()))
 
 plt.title("Packets comparison")
