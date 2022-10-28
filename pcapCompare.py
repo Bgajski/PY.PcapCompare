@@ -14,7 +14,7 @@ for packet in pcapScrap1:
     pcapData1 = collections.Counter(protocolList1)
 print(protocolList1)
 
-pcapScrap2 = pyshark.FileCapture('static\images\tile2.pcap', only_summaries=True)
+pcapScrap2 = pyshark.FileCapture('static\images\file2.pcap', only_summaries=True)
 protocolList2 = []
 for packet in pcapScrap2:
     line = str(packet)
