@@ -18,7 +18,7 @@ def read_pcap(file_path):
 
 
 pcap_data1, protocol_list1 = read_pcap('static/pcap/file1.pcap')
-pcap_data2, protocol_list2 = read_pcap('static/pcap/file1.pcap')
+pcap_data2, protocol_list2 = read_pcap('static/pcap/file2.pcap')
 
 # Show protocol list frequency
 plt.style.use('ggplot')
