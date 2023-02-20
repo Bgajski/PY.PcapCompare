@@ -1,24 +1,50 @@
+import pyshark
 import collections
-import matplotlib
 import numpy as np
 import matplotlib.pyplot as plt
-import pyshark
-
-matplotlib.use('TkAgg')
 
 
 def read_pcap(file_path):
+    protocol_attrs = {
+        'HTTP': 'http',
+        'DNS': 'dns',
+        'SMTP': 'smtp',
+        'TCP': 'tcp',
+        'UDP': 'udp',
+        'IP': 'ip',
+        'IPv6': 'ipv6',
+        'SSL/TLS': 'ssl'
+    }
+    global protocol_list
     protocol_list = []
-    with pyshark.FileCapture(file_path, only_summaries=True) as pcap_scrap:
+    with pyshark.FileCapture(file_path) as pcap_scrap:
         for packet in pcap_scrap:
-            line = str(packet)
-            formatted_line = line.split(" ")
-            protocol_list.append(formatted_line[4])
-        return collections.Counter(protocol_list), protocol_list
+            try:
+                protocol_search = packet.transport_layer
+            except AttributeError:
+                # Ignore packets that don't contain transport layer information
+                pass
+            else:
+                protocol_list.append(protocol_search)
+
+            for protocol_name, protocol_attr in protocol_attrs.items():
+                try:
+                    protocol_search = getattr(packet, protocol_attr)
+                    protocol_list.append(protocol_name)
+                except AttributeError:
+                    pass
+
+    return protocol_list
 
 
-pcap_data1, protocol_list1 = read_pcap('static/pcap/file1.pcap')
-pcap_data2, protocol_list2 = read_pcap('static/pcap/file2.pcap')
+pcap_file1 = 'static/pcap/file1.pcapng'
+pcap_file2 = 'static/pcap/file2.pcapng'
+
+protocol_list1 = read_pcap(pcap_file1)
+protocol_list2 = read_pcap(pcap_file2)
+
+pcap_data1 = collections.Counter(protocol_list1)
+pcap_data2 = collections.Counter(protocol_list2)
 
 # Show protocol list frequency
 plt.style.use('ggplot')
@@ -26,11 +52,17 @@ plt.style.use('ggplot')
 x_pos = np.arange(len(list(pcap_data1.keys())))
 y_pos = np.arange(len(list(pcap_data2.keys())))
 
-plt.bar(x_pos, list(pcap_data1.values()), align='center', alpha=0.5, color=['b', 'g', 'r', 'c', 'm'])
-plt.xticks(x_pos, list(pcap_data1.keys()))
+bar_width = 0.35
 
-plt.bar(y_pos, list(pcap_data2.values()), align='center', alpha=0.5, color=['pink'])
-plt.xticks(y_pos, list(pcap_data2.keys()))
+fig, ax = plt.subplots()
+
+graph1 = ax.bar(x_pos, list(pcap_data1.values()), bar_width, alpha=0.5, color='b', label='PCAP File 1')
+graph2 = ax.bar(y_pos + bar_width, list(pcap_data2.values()), bar_width, alpha=0.5, color='r', label='PCAP File 2')
+
+ax.set_xticks(x_pos + bar_width / 2)
+ax.set_xticklabels(list(pcap_data1.keys()))
+
+ax.legend()
 
 plt.title("Packets comparison")
 plt.ylabel("Frequency")
