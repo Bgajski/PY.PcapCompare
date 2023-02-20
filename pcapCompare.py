@@ -6,11 +6,15 @@ import matplotlib.pyplot as plt
 
 def read_pcap(file_path):
     protocol_attrs = {
+        'HTTP': 'http',
+        'DHCP': 'dhcp',
         'DNS': 'dns',
+        'SMTP': 'smtp',
         'TCP': 'tcp',
         'UDP': 'udp',
+        'IP': 'ip',
+        'SSL/TLS': 'ssl'
     }
-    global protocol_list
     protocol_list = []
     with pyshark.FileCapture(file_path) as pcap_scrap:
         for packet in pcap_scrap:
@@ -41,6 +45,10 @@ protocol_list2 = read_pcap(pcap_file2)
 pcap_data1 = collections.Counter(protocol_list1)
 pcap_data2 = collections.Counter(protocol_list2)
 
+# Combine the keys from both dictionaries and remove duplicates
+keys = list(set(list(pcap_data1.keys()) + list(pcap_data2.keys())))
+
+
 # Show protocol list frequency
 plt.style.use('ggplot')
 
@@ -55,7 +63,7 @@ graph1 = ax.bar(x_pos, list(pcap_data1.values()), bar_width, alpha=0.5, color='b
 graph2 = ax.bar(y_pos + bar_width, list(pcap_data2.values()), bar_width, alpha=0.5, color='r', label='PCAP File 2')
 
 ax.set_xticks(x_pos + bar_width / 2)
-ax.set_xticklabels(list(pcap_data1.keys()))
+ax.set_xticklabels(keys)
 
 ax.legend()
 
