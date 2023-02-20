@@ -6,14 +6,11 @@ import matplotlib.pyplot as plt
 
 def read_pcap(file_path):
     protocol_attrs = {
-        'HTTP': 'http',
-        'DHCP': 'dhcp',
-        'DNS': 'dns',
-        'SMTP': 'smtp',
         'TCP': 'tcp',
         'UDP': 'udp',
-        'IP': 'ip',
-        'SSL/TLS': 'ssl'
+        'SSL/TLS': 'ssl',
+        'HTTP': 'http',
+        'SMTP': 'smtp'
     }
     protocol_list = []
     with pyshark.FileCapture(file_path) as pcap_scrap:
