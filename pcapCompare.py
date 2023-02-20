@@ -6,14 +6,9 @@ import matplotlib.pyplot as plt
 
 def read_pcap(file_path):
     protocol_attrs = {
-        'HTTP': 'http',
         'DNS': 'dns',
-        'SMTP': 'smtp',
         'TCP': 'tcp',
         'UDP': 'udp',
-        'IP': 'ip',
-        'IPv6': 'ipv6',
-        'SSL/TLS': 'ssl'
     }
     global protocol_list
     protocol_list = []
