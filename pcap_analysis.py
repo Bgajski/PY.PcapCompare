@@ -32,7 +32,6 @@ def read_pcap(file_path):
 
     return protocol_list
 
-
 pcap_file1 = 'static/pcap/file1.pcapng'
 pcap_file2 = 'static/pcap/file2.pcapng'
 
@@ -45,15 +44,12 @@ pcap_data2 = collections.Counter(protocol_list2)
 # Combine the keys from both dictionaries and remove duplicates
 keys = list(set(list(pcap_data1.keys()) + list(pcap_data2.keys())))
 
-
 # Show protocol list frequency
 plt.style.use('ggplot')
 
 x_pos = np.arange(len(list(pcap_data1.keys())))
 y_pos = np.arange(len(list(pcap_data2.keys())))
-
 bar_width = 0.35
-
 fig, ax = plt.subplots()
 
 graph1 = ax.bar(x_pos, list(pcap_data1.values()), bar_width, alpha=0.5, color='b', label='PCAP File 1')
@@ -61,7 +57,6 @@ graph2 = ax.bar(y_pos + bar_width, list(pcap_data2.values()), bar_width, alpha=0
 
 ax.set_xticks(x_pos + bar_width / 2)
 ax.set_xticklabels(keys)
-
 ax.legend()
 
 plt.title("Packets comparison")
