@@ -33,3 +33,8 @@ PCAP Packet Driver: Class for extracting protocol information from individual pa
 PCAP Protocol Extractor: Base class for protocol-specific extractors
 
 PCAP Comparison Plotter: Class for generating protocol comparison plots using Matplotlib and Seaborn
+
+# License
+This project is licensed under the MIT License.
+
+
