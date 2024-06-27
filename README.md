@@ -1,4 +1,4 @@
-## PCAP Compare 
+# PCAP Compare 
 
 Python protocol comparison gui program for Wireshark PCAPs
 
@@ -12,18 +12,6 @@ Compare Protocols: Analyze the selected PCAP files and display a bar plot compar
 
 Reset and Exit: Clear selections and the plot with "Reset", and close the application with "Exit"
 
-# Required Libraries
-
-tkinter: For creating the GUI application
-
-matplotlib: For generating the bar plots
-
-seaborn: For enhancing the visual appeal of the plots
-
-pandas: For data manipulation and analysis
-
-pyshark: For parsing and extracting data from PCAP files
-
 # Code Overview
 
 PCAP Compare GUI: The main GUI application for selecting PCAP files and displaying protocol comparison plots
@@ -36,7 +24,17 @@ PCAP Protocol Extractor: Base class for protocol-specific extractors
 
 PCAP Comparison Plotter: Class for generating protocol comparison plots using Matplotlib and Seaborn
 
+# Required Libraries
+
+tkinter: For creating the GUI application
+
+matplotlib: For generating the bar plots
+
+seaborn: For enhancing the visual appeal of the plots
+
+pandas: For data manipulation and analysis
+
+pyshark: For parsing and extracting data from PCAP files
+
 # License
 This project is licensed under the MIT License.
-
-
