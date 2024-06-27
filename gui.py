@@ -9,23 +9,20 @@ class PcapCompareGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("PCAP Compare GUI")
-        self.root.geometry("1280x720")  # Adjusted window size to 1280x720
-        self.root.configure(bg='lightblue')
+        self.root.geometry("1280x720")  
+        self.root.configure(bg='blue')
 
-        # Set font style
         self.font_style = ("Tahoma", 10)
 
-        # Create the main frames
         self.browse_frame = tk.Frame(root, bg='lightblue')
         self.browse_frame.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
 
-        self.control_frame = tk.Frame(root, bg='lightblue')
+        self.control_frame = tk.Frame(root, bg='lightgrey')
         self.control_frame.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
 
-        self.plot_frame = tk.Frame(root, bg='lightblue')
+        self.plot_frame = tk.Frame(root, bg='grey')
         self.plot_frame.pack(side=tk.TOP, fill=tk.BOTH, expand=True, pady=10)
 
-        # Create UI elements in browse frame
         self.button1 = tk.Button(self.browse_frame, text="Browse", command=self.load_file1, bg='lightgreen', font=self.font_style, width=10, height=2)
         self.button1.grid(row=0, column=0, padx=10, pady=5)
         self.label1 = tk.Label(self.browse_frame, text="Select first PCAP file:", bg='lightblue', font=self.font_style)
@@ -36,7 +33,6 @@ class PcapCompareGUI:
         self.label2 = tk.Label(self.browse_frame, text="Select second PCAP file:", bg='lightblue', font=self.font_style)
         self.label2.grid(row=1, column=1, padx=10, pady=5, sticky="w")
 
-        # Create UI elements in control frame
         self.compare_button = tk.Button(self.control_frame, text="Compare", command=self.compare_files, bg='lightgreen', font=self.font_style, width=10, height=2)
         self.compare_button.grid(row=0, column=0, padx=10, pady=5)
 
