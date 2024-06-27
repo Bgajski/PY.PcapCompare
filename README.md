@@ -1,4 +1,4 @@
-PCAP Compare GUI
+## PCAP Compare GUI
 
 # Description
 This project provides a GUI application for comparing network protocols from two PCAP files. Built with Python, it uses Tkinter for the GUI, Matplotlib for visualizing protocol comparisons, Pandas for data manipulation, Seaborn for creating statistical plots, and Pyshark for parsing PCAP files. This tool offers a user-friendly way to analyze and visualize differences in network protocol usage between two PCAP files.
