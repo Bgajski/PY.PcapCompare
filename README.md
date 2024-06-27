@@ -5,7 +5,9 @@ This project provides a GUI application for comparing network protocols from two
 
 # Features
 Load PCAP Files: Select two PCAP files using the "Browse" buttons.
+
 Compare Protocols: Analyze the selected PCAP files and display a bar plot comparing the protocols.
+
 Reset and Exit: Clear selections and the plot with "Reset", and close the application with "Exit".
 
 # Required Libraries
@@ -18,7 +20,11 @@ pyshark: For parsing and extracting data from PCAP files.
 # Code Overview
 
 PCAP Compare GUI: The main GUI application for selecting PCAP files and displaying protocol comparison plots.
+
 PCAP Driver: Class for loading and parsing PCAP files using Pyshark.
+
 PCAP Packet Driver: Class for extracting protocol information from individual packets.
+
 PCAP Protocol Extractor: Base class for protocol-specific extractors.
+
 PCAP Comparison Plotter: Class for generating protocol comparison plots using Matplotlib and Seaborn.
